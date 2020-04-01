@@ -55,10 +55,10 @@ class LocalConfig(Config):
 @dataclass
 class StagingConfig(Config):
     roman_url: str = 'http://proxy.services.zinfra.io'
-    charon_url: str = 'http://charon.proxy.services.zinfra.io'
+    charon_url: str = 'http://charon.services.zinfra.io'
 
 
 @dataclass
 class ProdConfig(Config):
     roman_url: str = 'http://proxy.services.wire.com'
-    charon_url: str = 'http://charon.proxy.services.wire.com'
+    charon_url: str = 'http://charon.services.wire.com'

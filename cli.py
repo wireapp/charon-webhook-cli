@@ -15,9 +15,12 @@ def fill_missing(cfg: UserConfig, env: Optional[str]):
     if env:
         cfg.env = env
 
+    def sanitize_url(url: str) -> str:
+        return url[0:-1] if url[-1] == '/' else url
+
     def set_missing(template):
-        cfg.roman_url = cfg.roman_url if cfg.roman_url else template.roman_url
-        cfg.charon_url = cfg.charon_url if cfg.charon_url else template.charon_url
+        cfg.roman_url = sanitize_url(cfg.roman_url if cfg.roman_url else template.roman_url)
+        cfg.charon_url = sanitize_url(cfg.charon_url if cfg.charon_url else template.charon_url)
         cfg.bot_summary = cfg.bot_summary if cfg.bot_summary else template.bot_summary
         cfg.service_name = cfg.service_name if cfg.service_name else template.service_name
 
