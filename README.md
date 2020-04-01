@@ -50,8 +50,8 @@ optional arguments:
                         yet.
   --summary SUMMARY     Summary of the service.
   --env {prod,staging,local}
-                        From which configuration should be loaded missing
-                        values
+                        Default configuration that is used for the missing
+                        values.
   --roman-url ROMAN_URL
                         Roman URL
   --charon-url CHARON_URL

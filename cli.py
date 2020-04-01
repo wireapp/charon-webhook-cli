@@ -58,7 +58,7 @@ if __name__ == '__main__':
     # fall back for loading additional data
     parser.add_argument("--service-name", help="Name of the service, if the account does not exist yet.")
     parser.add_argument("--summary", help="Summary of the service.")
-    parser.add_argument("--env", help="From which configuration should be loaded missing values",
+    parser.add_argument("--env", help="Default configuration that is used for the missing values.",
                         default='local', choices=['prod', 'staging', 'local'])
     parser.add_argument("--roman-url", help="Roman URL")
     parser.add_argument("--charon-url", help="Charon URL")
