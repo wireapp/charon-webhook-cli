@@ -36,6 +36,9 @@ def login(url: str, email: str, password: str) -> bool:
     r = s.post(f"{url}/login", json=payload)
     if r:
         silent_print('Login successful.')
+    elif r.json().get('message') in {'Authentication failed.'}:
+        silent_print(f'It was not possible to login: {r.json()}')
+        exit(4)
     else:
         silent_print(f'It was not possible to login: {r.json()}')
     return bool(r)
@@ -50,7 +53,9 @@ def create_service(url: str, name: str, service_url: str, service_summary: str) 
     r = s.post(f"{url}/service", json=payload)
     if r:
         silent_print('Service created.')
-        return r.json()['service_authentication']
+        json = r.json()
+        silent_print(f'Service has following code:\n{json["service_code"]}')
+        return json['service_authentication']
     else:
         silent_print(f'It was not possible to create service: {r.json()}')
         return None
@@ -71,6 +76,7 @@ def get_auth_code(url: str, service_url: Optional[str]) -> Optional[str]:
         auth_code = json.get('service_authentication')
         if auth_code:
             silent_print('Service exists.')
+            silent_print(f'Service has following service code:\n{json["service_code"]}')
 
             if service_url and json['webhook'] != service_url:
                 silent_print(
