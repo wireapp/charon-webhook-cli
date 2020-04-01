@@ -6,9 +6,9 @@ from typing import Optional
 
 from dacite import from_dict
 
-from charon import register_webhook_bot
-from default_config import UserConfig, ProdConfig, StagingConfig, LocalConfig
-from roman import obtain_auth
+from modules.charon import register_webhook_bot
+from modules.default_config import UserConfig, ProdConfig, StagingConfig, LocalConfig
+from modules.roman import obtain_auth
 
 
 def fill_missing(cfg: UserConfig, env: Optional[str]):
