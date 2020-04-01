@@ -2,6 +2,7 @@
 
 import argparse
 import json
+from typing import Optional
 
 from dacite import from_dict
 
@@ -10,19 +11,19 @@ from default_config import UserConfig, ProdConfig, StagingConfig, LocalConfig
 from roman import obtain_auth
 
 
-def fill_missing(config: UserConfig, env: str):
+def fill_missing(cfg: UserConfig, env: Optional[str]):
     if env:
-        config.env = env
+        cfg.env = env
 
     def set_missing(template):
-        config.roman_url = config.roman_url if config.roman_url else template.roman_url
-        config.charon_url = config.charon_url if config.charon_url else template.charon_url
-        config.bot_summary = config.bot_summary if config.bot_summary else template.bot_summary
-        config.service_name = config.service_name if config.service_name else template.service_name
+        cfg.roman_url = cfg.roman_url if cfg.roman_url else template.roman_url
+        cfg.charon_url = cfg.charon_url if cfg.charon_url else template.charon_url
+        cfg.bot_summary = cfg.bot_summary if cfg.bot_summary else template.bot_summary
+        cfg.service_name = cfg.service_name if cfg.service_name else template.service_name
 
-    if config.env == 'prod':
+    if cfg.env == 'prod':
         set_missing(ProdConfig())
-    elif config.env.startswith('stag'):
+    elif cfg.env.startswith('stag'):
         set_missing(StagingConfig())
     else:
         set_missing(LocalConfig())
@@ -34,15 +35,15 @@ def file_config(path: str) -> UserConfig:
         return from_dict(data_class=UserConfig, data=data)
 
 
-def args_config(args) -> UserConfig:
+def args_config(cli_args) -> UserConfig:
     return UserConfig(
-        email=args.email,
-        password=args.password,
-        service_name=args.service_name,
-        bot_summary=args.summary,
-        env=args.env,
-        roman_url=args.roman_url,
-        charon_url=args.charon_url
+        email=cli_args.email,
+        password=cli_args.password,
+        service_name=cli_args.service_name,
+        bot_summary=cli_args.summary,
+        env=cli_args.env,
+        roman_url=cli_args.roman_url,
+        charon_url=cli_args.charon_url
     )
 
 
