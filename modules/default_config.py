@@ -42,8 +42,8 @@ class UserConfig:
 
 @dataclass
 class Config:
-    service_name: str = 'Web Hook Bot'
-    bot_summary: str = 'Web hooks sent to the conversations.'
+    service_name: str = 'Webhook Bot'
+    bot_summary: str = 'Webhooks sent to the conversations.'
 
 
 @dataclass
