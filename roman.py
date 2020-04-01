@@ -90,6 +90,10 @@ def obtain_auth(url: str, email: str, password: str,
                 service_name: Optional[str] = None,
                 service_url: Optional[str] = None,
                 service_summary: Optional[str] = None) -> Optional[str]:
+    """
+    Registers bot in the Roman. Returns service_authentication if the registration was successful.
+    """
+
     if login(url, email, password):
         silent_print('Login successful')
     elif register(url, email, password, service_name):
