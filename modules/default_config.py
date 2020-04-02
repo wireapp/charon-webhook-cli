@@ -61,4 +61,4 @@ class StagingConfig(Config):
 @dataclass
 class ProdConfig(Config):
     roman_url: str = 'https://proxy.services.wire.com'
-    charon_url: str = 'https://charon.proxy.services.wire.com'
+    charon_url: str = 'https://charon.services.wire.com'
