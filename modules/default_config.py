@@ -26,7 +26,8 @@ class UserConfig:
 
     env: Optional[str]
     """
-    Defines which environment configuration should be used. If no is selected, LocalConfig is used.
+    Defines which environment configuration should be used. 
+    If no is selected, LocalConfig is used.
     """
 
     roman_url: Optional[str]

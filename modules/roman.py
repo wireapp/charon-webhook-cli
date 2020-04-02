@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import argparse
 import os
 from typing import Optional
 
@@ -116,30 +115,3 @@ def obtain_auth(url: str, email: str, password: str,
         raise Exception('Not possible to obtain auth.')
 
     return auth_code
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Login or create account in Roman')
-
-    parser.add_argument("--email", "-e", help="Email for the account.")
-    parser.add_argument("--password", "-p", help="Password for the account.")
-
-    parser.add_argument("--url", "-u", default="http://proxy.services.zinfra.io", help="Roman URL")
-    parser.add_argument("--name", "-n", help="Name of the service, if the account does not exist yet.")
-    parser.add_argument("--service-url", "-su", help="URL where is the service running.")
-    parser.add_argument("--summary", "-sm", help="Summary of the service.")
-
-    parser.add_argument("--silent", "-s", action='store_const', const='True', help="Run in silent mode.",
-                        default='False')
-
-    args = parser.parse_args()
-
-    os.environ['SILENT'] = str(args.silent)
-
-    auth = obtain_auth(args.url, args.email, args.password, args.name, args.service_url, args.summary)
-
-    if auth:
-        if args.silent == 'True':
-            print(auth)
-        else:
-            silent_print(f'Auth code: {auth}')
