@@ -1,6 +1,6 @@
 # Charon Webhook CLI
 This project is part of [Charon](https://github.com/wireapp/charon) CLI for registering new bots that are using
- [Charon Web Hook API](https://github.com/wireapp/charon#web-hook-api).
+ [Charon Web Hook API](https://github.com/wireapp/charon#webhook-api).
  
 ## Existing bots
 List of service codes for the webhook bots that are deployed to the production.
