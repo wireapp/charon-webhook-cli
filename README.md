@@ -39,7 +39,7 @@ It is also possible to specify advanced configuration:
 
 ### Pass arguments to CLI
 
-```bash
+```
 usage: cli.py [-h] [--file FILE] [--email EMAIL] [--password PASSWORD]
               [--service-name SERVICE_NAME] [--summary SUMMARY]
               [--env {prod,staging,local}] [--roman-url ROMAN_URL]
