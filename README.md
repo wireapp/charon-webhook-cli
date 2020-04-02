@@ -2,12 +2,19 @@
 This project is part of [Charon](https://github.com/wireapp/charon) CLI for registering new bots that are using
  [Charon Web Hook API](https://github.com/wireapp/charon#web-hook-api).
  
+## Existing bots
+List of service codes for the webhook bots that are deployed to the production.
+* Github Actions bot - used for sending results of Github Actions to Wire.
+```bash
+1ca877b4-2e1a-42ef-b47d-c5ceda8b2fec:295e4e93-d347-4fe8-9f83-7a10c7c0a4c3
+```
+
+## Usage
 What does this CLI do:
 1) Creates new [Roman](https://github.com/dkovacevic/roman) account (if does not exist yet)
 1) Creates new service in [Roman](https://github.com/dkovacevic/roman) (if does not exist yet)
 1) Registers new webhook only bot in [Charon](https://github.com/wireapp/charon)
 
-## Usage
 Two possible ways how to configure the CLI.
 
 ### File configuration
